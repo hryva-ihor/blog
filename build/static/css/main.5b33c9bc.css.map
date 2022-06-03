@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.5b33c9bc.css","mappings":"AAAA,UACE,UAAY,CACZ,oBAAqB,CACrB,gBACE,UACF,CAAC,QAGD,aAAc,CACd,yBAA0B","sources":["components/Appbar/Appbar.scss"],"sourcesContent":[".nav-link{\n  color: white;\n  text-decoration: none;\n  &__dark{\n    color: black\n  }\n}\n.active{\n  color:deeppink;\n  text-decoration: underline;\n}"],"names":[],"sourceRoot":""}

@@ -1,17 +1,12 @@
 import { Box } from "@mui/system";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Button, ImageList } from "@mui/material";
 import { Albumsitem } from "../components/Albumsitem";
 import { Link } from "react-router-dom";
-import { getAlbumsData } from "../services/album-services";
+import useAlbums from "../hook/useAlbums";
 
 const Blogpage = () => {
-  const [albums, setAlbums] = useState([]);
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const albumQuery = searchParams.get("album") || ``;
-  useEffect(() => {
-    getAlbumsData().then(({ data }) => setAlbums(data.reverse()));
-  }, []);
+  const { albums } = useAlbums();
 
   return (
     <Box>

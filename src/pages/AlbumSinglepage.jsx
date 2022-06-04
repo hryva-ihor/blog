@@ -8,12 +8,17 @@ import Typography from "@mui/material/Typography";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Box } from "@mui/system";
 import { deletAlbum } from "../services/album-services";
+import useAlbums from "../hook/useAlbums";
 
 const AlbumSinglepage = () => {
+  const { handleDeletAlbum } = useAlbums();
   const { id } = useParams();
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
+  };
+  const goAlbumspage = () => {
+    navigate({ pathname: `/albumspage` });
   };
   let ID = id.replace(/[^\d]/g, "");
   const [album, setAlbum] = useState(null);
@@ -24,8 +29,8 @@ const AlbumSinglepage = () => {
   }, [id]);
 
   const handleDelet = () => {
-    deletAlbum(ID);
-    navigate({ pathname: `/albumspage` });
+    handleDeletAlbum(ID);
+    goAlbumspage();
   };
 
   return (

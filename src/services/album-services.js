@@ -12,9 +12,9 @@ export const getAlbumsData = () => {
   return Axios.get(ALBUMS_URI);
 };
 
-// export const  = (id) => {
-//   return Axios.getAlbumItemget(ALBUMS_URI, id);
-// };
+export const getAlbumItemget = (id) => {
+  return Axios.get(ALBUMS_URI + `/${id}`);
+};
 
 export const updateAlbum = (editAlbum, id) => {
   return Axios.put(`${ALBUMS_URI}/${id}`, editAlbum);

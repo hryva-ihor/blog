@@ -6,72 +6,28 @@ import Input from "@mui/material/Input";
 import InputLabel from "@mui/material/InputLabel";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router";
-import { addNewAlbum } from "../services/album-services";
+import useAlbums from "../hook/useAlbums";
 
 const Createalbum = () => {
-  const [title, setTitle] = useState("");
-  const [subtitle, setSubitle] = useState("");
-  const [about, setAbout] = useState("");
-  const [imgURL, setImgURL] = useState("");
-  const [validURL, setValidURL] = useState(false);
+  const {
+    handlerOnChangeInput,
+    handleSubmitEvent,
+    title,
+    subtitle,
+    about,
+    imgURL,
+    validURL,
+  } = useAlbums();
   const navigate = useNavigate();
   const goBack = () => {
     navigate(-1);
   };
 
   const handlerOnChange = (e) => {
-    switch (e.target.name) {
-      case "title":
-        setTitle(e.target.value);
-        break;
-      case "subtitle":
-        setSubitle(e.target.value);
-        break;
-      case "about":
-        setAbout(e.target.value);
-        break;
-      case "imgURL":
-        setImgURL(e.target.value);
-        setValidURL(
-          e.target.value.split("/")[0] === "https:" &&
-            e.target.value.includes("https://", 0)
-        );
-        break;
-      default:
-        alert("something wrong");
-    }
-  };
-  const validImgURL = (imgURL) => {
-    if (imgURL.includes("https://", 0)) {
-      setValidURL(true);
-      return true;
-    }
-    return false;
+    handlerOnChangeInput(e);
   };
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const title = form.title.value;
-    const subtitle = form.subtitle.value;
-    const about = form.about.value;
-    const imgURL = form.imgURL.value;
-    if (form && title && about && validImgURL(imgURL)) {
-      setTitle("");
-      setSubitle("");
-      setAbout("");
-      setImgURL("");
-      setValidURL(true);
-      const newAlbum = {
-        title: title,
-        subtitle: subtitle,
-        about: about,
-        img: imgURL,
-      };
-      addNewAlbum(newAlbum);
-      goBack();
-    } else {
-      return false;
-    }
+    handleSubmitEvent(e, goBack);
   };
 
   return (

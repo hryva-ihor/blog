@@ -29,8 +29,7 @@ const AlbumSinglepage = () => {
   }, [id]);
 
   const handleDelet = () => {
-    handleDeletAlbum(ID);
-    goAlbumspage();
+    handleDeletAlbum(ID, goAlbumspage);
   };
 
   return (
@@ -39,7 +38,7 @@ const AlbumSinglepage = () => {
         Go back
       </Button>
       {album && (
-        <Card sx={{ maxWidth: { md: "80%", sm: "100%" }, maxHeight: "auto" }}>
+        <Card sx={{ maxWidth: { md: "50%", sm: "100%" }, maxHeight: "auto" }}>
           <CardMedia
             component="img"
             height="100%"

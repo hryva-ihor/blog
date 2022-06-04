@@ -72,8 +72,8 @@ const useAlbums = () => {
       };
       addNewAlbum(newAlbum).then(({ data }) => {
         setAlbums([...albums, data]);
+        goBack();
       });
-      goBack();
     } else {
       return false;
     }
@@ -126,8 +126,8 @@ const useAlbums = () => {
       };
       updateAlbum(editAlbum, ID).then((data) => {
         setAlbums([...albums, data]);
+        goToAlbumsPage();
       });
-      goToAlbumsPage();
     } else {
       e.preventDefault();
       return false;
@@ -136,10 +136,13 @@ const useAlbums = () => {
   //!   edit album page
   ////////////////////////////////////////
   //! delet album
-  const handleDeletAlbum = (id) => {
+  const handleDeletAlbum = (id, goAlbumspage) => {
     deletAlbum(id);
     const newAlbumsData = albums.filter((album) => album.id !== id);
     setAlbums(newAlbumsData);
+    setInterval(() => {
+      goAlbumspage();
+    }, 500);
   };
   //! delet album
 

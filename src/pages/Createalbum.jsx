@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
@@ -58,7 +58,6 @@ const Createalbum = () => {
             id="component-helper"
             aria-describedby="component-helper-text"
           />
-          {/* <FormHelperText id="component-helper-text">(album name)</FormHelperText> */}
         </FormControl>
         <FormControl variant="standard">
           <InputLabel htmlFor="component-helper">Subtitle</InputLabel>
@@ -71,7 +70,6 @@ const Createalbum = () => {
             id="component-helper"
             aria-describedby="component-helper-text"
           />
-          {/* <FormHelperText id="component-helper-text">()</FormHelperText> */}
         </FormControl>
         <FormControl variant="standard">
           <InputLabel htmlFor="component-helper">About album</InputLabel>
@@ -84,9 +82,6 @@ const Createalbum = () => {
             id="component-helper"
             aria-describedby="component-helper-text"
           />
-          {/* <FormHelperText id="component-helper-text">
-          Enter text about album
-        </FormHelperText> */}
         </FormControl>
         <FormControl variant="standard">
           <InputLabel htmlFor="component-helper">Img URL</InputLabel>

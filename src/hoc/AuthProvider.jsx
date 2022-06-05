@@ -10,7 +10,7 @@ const AuthProvider = ({ children }) => {
   const signIn = (newUser, cb) => {
     setUser(newUser);
     cb();
-    localStorage.setItem("user", newUser);
+    localStorage.setItem("user", String(newUser));
   };
   const signOut = (cb) => {
     setUser(null);

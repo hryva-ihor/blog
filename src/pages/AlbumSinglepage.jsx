@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -7,11 +7,10 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { Box } from "@mui/system";
-import { deletAlbum } from "../services/album-services";
 import useAlbums from "../hook/useAlbums";
 
 const AlbumSinglepage = () => {
-  const { handleDeletAlbum } = useAlbums();
+  const { handleDeletAlbum, getAlbumItem, album } = useAlbums();
   const { id } = useParams();
   const navigate = useNavigate();
   const goBack = () => {
@@ -20,12 +19,9 @@ const AlbumSinglepage = () => {
   const goAlbumspage = () => {
     navigate({ pathname: `/albumspage` });
   };
-  let ID = id.replace(/[^\d]/g, "");
-  const [album, setAlbum] = useState(null);
+  const ID = id.replace(/[^\d]/g, "");
   useEffect(() => {
-    fetch(`https://61e7eaede32cd90017acbe93.mockapi.io/albums/${ID}`).then(
-      (res) => res.json().then((data) => setAlbum(data))
-    );
+    getAlbumItem(ID);
   }, [id]);
 
   const handleDelet = () => {
